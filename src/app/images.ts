@@ -50,3 +50,5 @@ export const IMAGES = [
       url: "https://placekitten.com/200/200",
     }
   ];
+
+  

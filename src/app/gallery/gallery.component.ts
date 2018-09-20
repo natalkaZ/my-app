@@ -9,11 +9,15 @@ import { IMAGES } from '../images';
 })
 
 export class GalleryComponent implements OnInit {
-  title = 'My photo gallery';
   images = IMAGES;
 
-  constructor() { }
+  remove(){
+    this.images.splice(0, 1);
+  };
 
+  constructor() { 
+    
+   }
   ngOnInit() {
   }
 
