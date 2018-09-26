@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IMAGES } from '../images';
 
 
@@ -9,15 +9,8 @@ import { IMAGES } from '../images';
 })
 
 export class GalleryComponent implements OnInit {
-  images = IMAGES;
+  public images = IMAGES;
 
-  remove(){
-    this.images.splice(0, 1);
-  };
-
-  constructor() { 
-    
-   }
   ngOnInit() {
   }
 

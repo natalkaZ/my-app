@@ -1,0 +1,5 @@
+.form-inline{
+    /* width: 100%; */
+    justify-content: space-around;
+    border-radius: 5px;
+}

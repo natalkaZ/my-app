@@ -5,7 +5,9 @@
   </h1>
 </div>
 <div class="container">
-  <app-gallery></app-gallery>
+  <div class="row">
+    <app-gallery (delete)="onDelete($event)"></app-gallery>
+  </div>
 </div>
 
 

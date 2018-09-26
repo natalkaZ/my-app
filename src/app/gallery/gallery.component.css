@@ -1,14 +1,36 @@
+app-gallery-form{
+    width: 92%;
+    margin: 0 auto;
+}
 ul{
     width: 100%;
     height: auto;
 }
+li{
+    margin-bottom: 2rem;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    padding: 22px 0;
+    box-shadow: 1px 1px 1px #8f96b6;
+    background: #d0d5ed;
+    box-sizing: border-box;
+}
 .list-inline-item{
     width: 30%;
-    height: auto;
+    height: 333px;
 }
 .figure{
     height: 257px;
 }
 img{
+    width: 200px;
     height: 200px;
+}
+
+.figure-caption{
+    width: 80%;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
