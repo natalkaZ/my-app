@@ -2,4 +2,12 @@
     /* width: 100%; */
     justify-content: space-around;
     border-radius: 5px;
+    background: #8abcf9;
+    box-shadow: 1px 1px 3px #5979a1;
+    padding: 1rem 0;
 }
+
+.btn.btn-primary{
+    box-shadow: 1px 1px 3px #26374d;
+}
+

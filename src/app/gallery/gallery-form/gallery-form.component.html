@@ -2,14 +2,14 @@
 
 <form #myForm="ngForm" (ngSubmit)="add()" class="form-inline">
   <label for="NewTitle">Enter title of the new img:
-    <input [(ngModel)]="NewTitle" name="NewTitle" id="NewTitle" placeholder="title img" #NewImageModel="ngModel" required />
+    <input [(ngModel)]="NewTitle" name="NewTitle" id="NewTitle" class="form-control ml-2" placeholder="title img" #NewImageModel="ngModel" required />
   </label>
   <label for="NewUrl">Enter url of the new img:
-    <input [(ngModel)]="NewUrl" type="url" name="NewUrl" id="NewUrl" pattern="https://.*" size="20" required />
+    <input [(ngModel)]="NewUrl" type="url" name="NewUrl" id="NewUrl" class="form-control ml-2"  placeholder="https://..." pattern="https://.*" size="20" required />
   </label>
 
   <div>
-    <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary" disabled>Відправити</button>
+    <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary" disabled>Add photo</button>
   </div>
 
 </form>
