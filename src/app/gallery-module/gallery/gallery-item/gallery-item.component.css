@@ -1,7 +1,3 @@
-app-gallery-form{
-    width: 92%;
-    margin: 0 auto;
-}
 ul{
     width: 100%;
     height: auto;
@@ -33,4 +29,8 @@ img{
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+.btn.btn-outline-info:hover{
+    box-shadow: 1px 1px 3px #26374d;
 }

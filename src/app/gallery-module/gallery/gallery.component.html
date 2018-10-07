@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <app-gallery-form [images]="images"></app-gallery-form>
+  </div>
+  <div class="row">
+    <app-gallery-item [images]="images" [image]="image" (delete)="onDelete = $event"></app-gallery-item>
+  </div>
+</div>

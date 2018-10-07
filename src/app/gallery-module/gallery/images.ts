@@ -1,8 +1,3 @@
-// export class Photo{
-//   constructor(id:number, title: string, url: any){
-//   }
-// }
-
 export const IMAGES = [
     {
       id: 1,
