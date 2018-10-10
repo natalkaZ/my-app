@@ -1,6 +1,6 @@
 // import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Component, OnInit, Input } from '@angular/core';
-import {ImageService} from '../image.service'
+import {ImageService} from '../../image.service'
 
 @Component({
   selector: 'app-gallery-item',
@@ -19,8 +19,15 @@ export class GalleryItemComponent implements OnInit {
   // onDelete(image) {
   //   this.delete.emit(this.images.splice(this.images.indexOf(image), 1));
   // } 
-
-  ngOnInit() {
+  // delete(){
+  //   this.ImageService.delete;
+  // }
+  onDelete(image){
+    return this.ImageService.onDelete(image);
   }
+
+  
+
+  ngOnInit() {  }
 
 }
