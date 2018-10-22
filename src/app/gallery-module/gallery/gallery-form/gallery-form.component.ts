@@ -30,7 +30,6 @@ export class GalleryFormComponent implements OnInit {
       .subscribe(image => {
         this.images.unshift(this.image);
     });
-    this.ImageService.getImages();
     this.NewTitle = "";
     this.NewUrl = "";
   }
