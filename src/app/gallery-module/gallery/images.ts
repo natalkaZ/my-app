@@ -51,4 +51,9 @@ export const IMAGES = [
     }
   ];
 
-  
+  // class Images{
+  //   id: number;
+  //   title: string;
+  //   url: string;
+  // }
+

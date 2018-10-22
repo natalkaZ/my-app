@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ImageService } from '../../image.service';
+import{Image} from '../../image'
 
 @Component({
   selector: 'app-gallery-form',
@@ -9,20 +10,34 @@ import { ImageService } from '../../image.service';
 
 export class GalleryFormComponent implements OnInit {
   @Input() images;
-
   NewTitle:string = "";
-  NewUrl:string = "";  
+  NewUrl:string = ""; 
+  GalleryL: number = null;
+  image = {
+    id: null,
+    title: '',
+    url: ''
+  } 
 
- constructor(private ImageService: ImageService) { 
-    
+ constructor(private ImageService: ImageService) {  }
+  add(NewTitle, NewUrl){  
+    if (this.NewTitle && this.NewUrl) {
+      this.GalleryL = this.images.lenght;
+      this.image.id = this.GalleryL + 1;
+      this.image.title = this.NewTitle;
+      this.image.url = this.NewUrl;
+      this.ImageService.add( this.image as Image)
+      .subscribe(image => {
+        this.images.unshift(this.image);
+    });
+    this.ImageService.getImages();
+    this.NewTitle = "";
+    this.NewUrl = "";
   }
-  add(){    
-    this.ImageService.NewTitle = this.NewTitle;
-    this.ImageService.NewUrl = this.NewUrl;
-    this.ImageService.add();
+    console.log(this.images);
+    return this.images;
   }
-  ngOnInit() {    
-   
+  ngOnInit() {  
   }
 
 }

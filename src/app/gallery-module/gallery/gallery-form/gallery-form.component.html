@@ -1,6 +1,6 @@
 <h3>Add new photo:</h3>
 
-<form #myForm="ngForm" (ngSubmit)="add()" class="form-inline">
+<form #myForm="ngForm" (ngSubmit)="add(NewTitle, NewUrl)" class="form-inline">
   <label for="NewTitle">Enter title of the new img:
     <input [(ngModel)]="NewTitle" name="NewTitle" id="NewTitle" class="form-control ml-2" placeholder="title img" #NewImageModel="ngModel" required />
   </label>

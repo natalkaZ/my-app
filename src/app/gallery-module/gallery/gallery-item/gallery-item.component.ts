@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ImageService} from '../../image.service'
+import{Image} from '../../image'
 
 @Component({
   selector: 'app-gallery-item',
@@ -14,9 +15,14 @@ export class GalleryItemComponent implements OnInit {
   constructor(private ImageService: ImageService) {
   }
 
-  onDelete(image){
-    return this.ImageService.onDelete(image);
-  }  
+  // onDelete(image){
+  //   return this.ImageService.onDelete(image);
+  // }  
+
+  onDelete(image: Image): void {
+  this.images = this.images.filter(i => i !== image);
+  this.ImageService.deleteImage(image).subscribe();
+} 
 
   ngOnInit() {  }
 
