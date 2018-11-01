@@ -1,9 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, fromEvent, from, of, Observer } from "rxjs";
-// import { IMAGES } from './gallery/images';
+import { Observable, of } from "rxjs";
 import { Image } from './image';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
  const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,8 +14,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 export class ImageService implements OnInit {
   private imagesUrl = 'http://localhost:3000/gallery'; 
-  images = [];
-  GalleryL = this.images.length; 
+  public images = [];
+  GalleryL: number; 
   NewTitle:string;
   NewUrl:string;  
 
@@ -39,13 +38,13 @@ export class ImageService implements OnInit {
   getImages(): Observable<Image[]>{
     return this.httpClient.get<Image[]>(this.imagesUrl)
     .pipe(
-      tap(images => console.log('fetched images')),
+      tap((images = this.images) => console.log('fetched images', images)),
       catchError(this.handleError('getImages', []))
     );
   }
 
   /** GET image by id **/
-  getImage(id: number): Observable<Image> {
+  getImage(id: number | string): Observable<Image> {
     const url = `${this.imagesUrl}/${id}`;
     return this.httpClient.get<Image>(url).pipe(
       tap(_ => console.log(`fetched image id=${id}`)),
@@ -66,8 +65,11 @@ deleteImage (image: Image | number): Observable<Image> {
 
   /** POST **/
   add (image: Image): Observable<Image> {
-    return this.httpClient.post<Image>(this.imagesUrl, image, httpOptions).pipe(
-      tap((image: Image) => console.log(`added image w/ id=${image.id}`)),
+    const id = typeof image === 'number' ? image : image.id;
+    const url = `${this.imagesUrl}`;
+
+    return this.httpClient.post<Image>(url, image, httpOptions).pipe(
+      tap((image: Image) => console.log(`added image id=${image.id}`)),
       catchError(this.handleError<Image>('add'))
     );
   }

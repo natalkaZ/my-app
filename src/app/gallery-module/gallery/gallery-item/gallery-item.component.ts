@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {ImageService} from '../../image.service'
-import{Image} from '../../image'
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import { Router,  ParamMap, ActivatedRoute } from '@angular/router';
+import {ImageService} from '../../image.service';
+import{Image} from '../../image';
 
 @Component({
   selector: 'app-gallery-item',
@@ -9,21 +12,22 @@ import{Image} from '../../image'
 })
 
 export class GalleryItemComponent implements OnInit {
-  @Input() images;
-  @Input() image;
+  image$: Observable<Image>;
 
-  constructor(private ImageService: ImageService) {
+  constructor(private ImageService: ImageService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router
+             ) { }
+
+  gotoGallery(image: Image) {
+    this.router.navigate(['/gallery']);
   }
 
-  // onDelete(image){
-  //   return this.ImageService.onDelete(image);
-  // }  
-
-  onDelete(image: Image): void {
-  this.images = this.images.filter(i => i !== image);
-  this.ImageService.deleteImage(image).subscribe();
-} 
-
-  ngOnInit() {  }
+  ngOnInit() { 
+    this.image$ = this.activatedRoute.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.ImageService.getImage(params.get('id')))
+    );
+  }
 
 }

@@ -1,9 +1,22 @@
-<ul id="imageList" class="list-inline text-center mt-5">
-  <li *ngFor="let image of images" class="list-inline-item align-middle">
-    <figure class="figure">
-        <img [src]="image?.url" class="figure-img img-fluid rounded mx-auto d-block img-thumbnail">
-        <figcaption class="figure-caption pb-2">{{image?.title}}</figcaption>
-        <button type="button" class="btn btn-outline-info" (click)="onDelete(image)">Delete</button>
-    </figure>
-  </li>
-</ul>
+<div class="container">
+  <div class="row">
+    <nav>
+      <button (click)="gotoGallery(image)" class="btn btn-outline-secondary">Back to the gallery</button>
+    </nav>
+  </div> 
+
+  <div class="row">
+    <div *ngIf="image$ | async as image" class="display-item list-inline-item align-middle">
+    <h3 class="mt-3">You choose image:</h3>
+      <ul class="list-inline text-center mt-3">
+        <li class="list-inline-item align-middle">
+          <figure class="figure">
+              <img [src]="image?.url" class="figure-img img-fluid rounded mx-auto d-block img-thumbnail">
+              <figcaption class="figure-caption pb-2">{{image?.title}}</figcaption>
+              <p>Image id: {{image?.id}}</p>
+          </figure>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

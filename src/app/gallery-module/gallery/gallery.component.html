@@ -1,8 +1,26 @@
 <div class="container">
   <div class="row">
-    <app-gallery-form [images]="images"></app-gallery-form>
+    <nav>
+      <button [routerLink]="['/gallery-form']" routerLinkActive="active" type="button" class="btn btn-outline-danger">Add new photo</button>
+    </nav>
+  
+    <div [@routeAnimation]="getAnimationData(routerOutlet)">
+        <router-outlet #routerOutlet="outlet"></router-outlet>
+    </div>
   </div>
+
   <div class="row">
-    <app-gallery-item [images]="images" [image]="image"></app-gallery-item>
+    <ul id="imageList" class="list-inline text-center mt-5">
+      <li *ngFor="let image of images"
+          class="list-inline-item align-middle"
+          [class.selected]="image === selectedImage">
+        <figure class="figure">
+            <img [src]="image?.url" class="figure-img img-fluid rounded mx-auto d-block img-thumbnail">
+            <figcaption class="figure-caption pb-2">{{image?.title}}</figcaption>
+            <button type="button" class="btn btn-outline-info mr-2" (click)="onDelete(image)">Delete</button>
+            <button [routerLink]="['/gallery-item', image.id]" routerLinkActive="active" class="btn btn-outline-success">Show detail</button>
+        </figure>
+      </li>
+    </ul> 
   </div>
 </div>

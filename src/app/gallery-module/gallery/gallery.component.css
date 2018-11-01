@@ -2,3 +2,48 @@ app-gallery-form{
     width: 92%;
     margin: 0 auto;
 }
+
+ul{
+    width: 100%;
+    height: auto;
+}
+li{
+    margin-bottom: 3rem;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    padding: 22px 0;
+    box-shadow: 1px 1px 1px #8f96b6;
+    background: #d0d5ed;
+    box-sizing: border-box;
+}
+
+ul li:nth-child(3n-1){
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.list-inline-item{
+    width: 30%;
+    height: 333px;
+}
+.figure{
+    height: 257px;
+}
+img{
+    width: 200px;
+    height: 200px;
+}
+
+.figure-caption{
+    width: 80%;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn.btn-outline-info:hover,
+.btn.btn-outline-success:hover,
+.btn.btn-outline-danger:hover{
+    box-shadow: 1px 1px 3px #26374d;
+} 

@@ -4,10 +4,17 @@
     border-radius: 5px;
     background: #8abcf9;
     box-shadow: 1px 1px 3px #5979a1;
-    padding: 1rem 0;
+    padding: 1rem;
 }
 
 .btn.btn-primary{
     box-shadow: 1px 1px 3px #26374d;
 }
 
+.btn.btn-outline-secondary:hover{
+    box-shadow: 1px 1px 3px #202021;
+}
+
+.form-title{
+    width: 100%;
+}
