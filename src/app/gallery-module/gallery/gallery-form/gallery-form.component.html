@@ -6,7 +6,7 @@
     </div>  
 
     <div class="row">
-    <h3 class="form-title mt-3">Add new photo:</h3>
+    <h3 class="form-title d-flex my-3">Add new photo:</h3>
 
     <form *ngIf="images$ | async as images" #myForm="ngForm" (ngSubmit)="add(NewTitle, NewUrl)" class="form-inline">
       <label for="NewTitle">Enter title of the new img:

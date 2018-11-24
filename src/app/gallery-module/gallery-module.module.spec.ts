@@ -1,4 +1,4 @@
-import { GalleryModule } from './gallery.module';
+import { GalleryModule } from './gallery-module.module';
 
 describe('GalleryModule', () => {
   let galleryModule: GalleryModule;

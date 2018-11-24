@@ -1,0 +1,11 @@
+.gallery-nav{
+    height: 100px;
+    width: 100%;
+    background:#d0d5ed;
+    box-shadow: 0 1px 1px #8f96b6;
+    padding: 10px;
+    margin: 0 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

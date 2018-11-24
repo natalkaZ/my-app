@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../image.service';
 import { Image } from '../image';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 interface myData{
   gallery: Object;
@@ -20,13 +21,13 @@ interface myData{
 
 
 export class GalleryComponent implements OnInit {
-  // @Input() image;
-  images$: Observable<Image[]>;
   public images: Image[];
   selectedImage: number;
+  message: string;
 
   constructor(private ImageService: ImageService,
-              private activatedRoute: ActivatedRoute){ }
+              private activatedRoute: ActivatedRoute,
+              private auth: AuthService){ }
 
   
   onDelete(image: Image): void {
@@ -35,27 +36,14 @@ export class GalleryComponent implements OnInit {
 } 
 
 ngOnInit() {
-  this.ImageService.getImages().subscribe((data: Image[]) => {
-    this.images = data;
-  });
+  this.images = this.activatedRoute.snapshot.data['images'];
+  
+  console.log('this loggedInStatus' + this.auth.loggedInStatus);
 
-  this.images$ = this.activatedRoute.paramMap.pipe(
-    switchMap(params => {
-      // (+) before `params.get()` turns the string into a number
-      this.selectedImage = +params.get('id');
-      return this.ImageService.getImages();
-      })
-  );
 }
 
 getAnimationData(outlet: RouterOutlet) {
   return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
 }
-
-// onSelect(image: Image): void {
-//   this.selectedImage = image;
-//   this.ImageService.selectImage(image).subscribe();
-//   console.log('You choose this image:' + image.title);
-// }
 
 }

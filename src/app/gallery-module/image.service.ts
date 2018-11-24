@@ -2,11 +2,14 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from "rxjs";
 import { Image } from './image';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, first } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { GalleryResolverService } from './gallery/gallery.resolver.service';
 
- const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+const httpOptions = {
+headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +20,13 @@ export class ImageService implements OnInit {
   public images = [];
   GalleryL: number; 
   NewTitle:string;
-  NewUrl:string;  
+  NewUrl:string;
+  message:string;
 
-  constructor(private httpClient:HttpClient){}
+  constructor(private httpClient:HttpClient,
+              private auth: AuthService,
+              private activatedRoute: ActivatedRoute
+              ){}
 
   //handle Error
   private handleError<T> (operation = 'operation', result?: T) {
@@ -35,7 +42,8 @@ export class ImageService implements OnInit {
     return of(result as T);
   };
 }
-  getImages(): Observable<Image[]>{
+
+  getImages():Observable<Image[]> {
     return this.httpClient.get<Image[]>(this.imagesUrl)
     .pipe(
       tap((images = this.images) => console.log('fetched images', images)),
@@ -74,8 +82,6 @@ deleteImage (image: Image | number): Observable<Image> {
     );
   }
   
-  ngOnInit(){
-
-  }
+  ngOnInit(){}
 
 }

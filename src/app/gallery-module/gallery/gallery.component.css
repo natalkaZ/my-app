@@ -3,6 +3,10 @@ app-gallery-form{
     margin: 0 auto;
 }
 
+.gallery-title{
+    width: 100%;
+}
+
 ul{
     width: 100%;
     height: auto;

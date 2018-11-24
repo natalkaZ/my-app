@@ -1,15 +1,20 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
-<div class="container">
+<div style = text-align:center>
+<div class="container-fluid">
   <div class="row">
-    <!-- <app-gallery (delete)="onDelete($event)"></app-gallery> -->
-    <router-outlet></router-outlet>
+    <nav class="gallery-nav">
+      <button [routerLink]="['/gallery-home']" routerLinkActive="active" type="button" class="btn btn-info">Home</button>
+      <button [routerLink]="['/gallery']" routerLinkActive="active" type="button" class="btn btn-info">Gallery</button>
+      <button (click)="login()" *ngIf="!authService.isLoggedIn" type="button" class="btn btn-danger">Login</button>
+      <button (click)="logout()" [routerLink]="['/login']" routerLinkActive="active" *ngIf="authService.isLoggedIn" type="button" class="btn btn-danger">Logout</button>
+    </nav>
   </div>
+
+  <router-outlet></router-outlet>
 </div>
+
+</div>
+
+  
 
 
 
