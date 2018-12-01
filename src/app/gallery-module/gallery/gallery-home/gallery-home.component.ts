@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class GalleryHomeComponent implements OnInit {
   title = 'My Gallery';
   image = {
-    url: "http://diarioveaonline.com/wp-content/uploads/2018/06/beautiful-hd-wallpapers-free-download-for-desktop-32.jpg",
+    url: "http://r.ddmcdn.com/w_606/s_f/o_1/cx_0/cy_15/cw_606/ch_404/APL/uploads/2014/06/10-kitten-cuteness-1.jpg",
   };
 
   constructor(private activatedRoute: ActivatedRoute,

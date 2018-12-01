@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
-import {GalleryRoutingModule} from './gallery-module/gallery-routing.module';
-import {GalleryModule} from './gallery-module/gallery-module.module';
-import {GalleryComponent} from './gallery-module/gallery/gallery.component';
+import {GalleryRoutingModule} from './gallery-module/gallery/gallery-routing.module';
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/auth.guard';
-
 
 
 const appRoutes: Routes = [
   {
+    path: 'gallery',
+    loadChildren: './gallery-module/gallery/gallery-module.module#GalleryModule',
+    canLoad: [AuthGuard],
+  },
+  {
     path: '',
     redirectTo: '/gallery-home',
     pathMatch: 'full',
-  },
-  {
-    path: 'gallery',
-    component: GalleryComponent,
-    // loadChildren: 'src/app/gallery-module/gallery-module.module#GalleryModule',
-    canActivate: [AuthGuard],
   },
   {
     path: '**',
@@ -28,11 +26,13 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [GalleryRoutingModule,
-            GalleryModule,
+  imports: [CommonModule, 
+            FormsModule, 
+            GalleryRoutingModule, 
             RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
-  declarations: [NotFoundComponent],
+  declarations: [NotFoundComponent]
 })
+
 export class AppRoutingModule {
 }

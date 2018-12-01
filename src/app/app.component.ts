@@ -16,13 +16,13 @@ export class AppComponent {
 
   constructor (public authService: AuthService, 
                public loginComponent: LoginComponent){
-                //  this.setMessage();
+                 this.setMessage();
                }
 
 
-  // setMessage(){
-  //   return this.loginComponent.setMessage();
-  // }
+  setMessage(){
+    return this.loginComponent.setMessage();
+  }
 
   login(){
     this.message = this.loginComponent.message;
